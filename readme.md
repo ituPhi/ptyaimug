@@ -31,8 +31,7 @@ Las sesiones están pensadas para ser dinámicas, útiles y accesibles:
 - 7:45 – 8:00 Networking final + transición a off-site
 
 
-Para ver el documento detallado de la estructura:  
-**./meeting-structure.md**
+Para ver el documento detallado de la estructura para cada charla revisa ./dates-topics/meet-up-date.md
 
 ---
 
@@ -46,16 +45,14 @@ Las Lightning Talks son charlas rápidas de 10–15 minutos donde los miembros p
 - Un experimento con agentes, RAG o pipelines  
 - Lecciones aprendidas en producción  
 
-Si deseas dar una charla, abre un issue en este repo o comunícate con los organizadores.
+Si deseas dar una charla, abre un issue o pull request en este repo o comunícate con los organizadores.
 
 ---
 
 ## 👥 Organizadores
 
-- **Juan Iturbe** — Desarrollador de IA / Agent Systems & Middleware  
-- **Paul [Apellido]** — [Rol/Bio]
-
-*(Actualiza esta sección cuando definamos roles finales.)*
+- **Juan Iturbe** — Fullstack AI Developer  
+- **Paul Phelps** — AI consulting, Developer
 
 ---
 
@@ -80,7 +77,6 @@ Próximamente habilitaremos:
 - Canal de Discord / Slack  
 - Calendario oficial  
 - Página web del grupo  
-- Call for Papers (CFP) para charlas
 
 Mantente atento a las actualizaciones.
 

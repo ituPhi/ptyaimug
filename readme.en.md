@@ -34,8 +34,7 @@ Our sessions are designed to mix learning, inspiration, and connection. A typica
 7:45 – 8:00 — Closing Networking + Off-site transition
 ```
 
-For the detailed meeting agenda, see:
-**[`/meeting-structure.md`](./meeting-structure.md)**
+For the detailed meeting agenda, check out ./dates-topics/meet-up-date:
 
 ---
 
@@ -71,8 +70,8 @@ This is the layer where developers get superpowers.
 
 The group is organized by:
 
-* **Juan Iturbe** — AI Developer, Agent Systems & Graph Architect
-* **Paul [Last Name or Link]** — [Your role/description]
+- **Juan Iturbe** — Fullstack AI Developer  
+- **Paul Phelps** — AI consulting, Developer
 
 We’re building this community from scratch, so if you want to help, collaborate, or sponsor… **we’re open to it!**
 
@@ -105,15 +104,3 @@ Panama can become a Latin American hub for AI engineering — not just consumers
 AIMUG is a small but powerful step toward that future.
 
 **Thanks for being part of the start.**
-
----
-
-If you want, I can also generate:
-
-* a logo
-* a simple brand identity for the group
-* a website/landing page in Astro or Next.js
-* a Notion page version of the README
-* a flyer for the first meetup
-
-Just say the word.
