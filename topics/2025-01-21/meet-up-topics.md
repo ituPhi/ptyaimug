@@ -11,5 +11,19 @@
 - 7:30-7:45 Lightning talk #3 - Rolando (TBD)
 - 7:45-8:00 Networking and transition to off-sit
 
+--- 
+
+## Detalles
+
+## Lightning talk #1 - Andy (Reprompt) (TBD):
+- 
+
+## Lightning talk #2 - Juan (Social Listenting with Agents -> Content Generation) (TBD):
+- 
+
+## Lightning talk #3 - Rolando (TBD):
+- 
+
+--- 
 
 ¡Nos vemos el **21 de enero** y gracias por ser parte de los primeros builders del AIMUG Panamá! 🇵🇦🚀
