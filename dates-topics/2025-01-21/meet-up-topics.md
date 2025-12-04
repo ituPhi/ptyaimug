@@ -1,6 +1,6 @@
 # Panama AIMUG — Meetup Topic  
-### **Reunión del 21 de Enero, 2025**
 
+### **Reunión del 21 de Enero, 2025**
 
 - 6:00-6:20 Networking 
 - 6:20-6:35 Group Welcome and introduction - Juan and Paul
@@ -10,6 +10,9 @@
 - 7:15-7:30 Lightning talk #2 - Juan (Social Listenting -> Content Generation) (TBD)
 - 7:30-7:45 Lightning talk #3 - Rolando (TBD)
 - 7:45-8:00 Networking and transition to off-sit
+
+## ¿ Donde ? 
+Oficina. Green Valley Panamá SA Calle 54 Este, Casa 9 (Marbella) Ciudad de Panamá.  
 
 --- 
 

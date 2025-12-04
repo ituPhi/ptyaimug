@@ -30,10 +30,9 @@ Las sesiones están pensadas para ser dinámicas, útiles y accesibles:
 - 7:00 – 7:45 Lightning Talks (3 espacios)
 - 7:45 – 8:00 Networking final + transición a off-site
 
-
 Para ver el documento detallado de la estructura para cada charla revisa ./dates-topics/meet-up-date.md
 
----
+___
 
 ## ⚡ Lightning Talks
 
@@ -56,6 +55,7 @@ Si deseas dar una charla, abre un issue o pull request en este repo o comunícat
 
 ---
 
+
 ## 🙌 Cómo Contribuir
 
 Este repositorio incluirá:
@@ -66,7 +66,7 @@ Este repositorio incluirá:
 - Notas y referencias técnicas  
 - Ejemplos y demos aportados por los miembros  
 
-Puedes contribuir con un **Pull Request** o abriendo un **Issue**.
+Si eres intivado a realizar una charla puedes agregar tu tema de interes y contribuir con un **Pull Request** o abriendo un **Issue**.
 
 ---
 
@@ -90,3 +90,16 @@ AIMUG es el primer paso: una comunidad de builders que aprende, experimenta y co
 
 Gracias por ser parte del inicio.  
 ¡Nos vemos en el próximo meetup!
+
+---
+
+## Apoyados por
+PtyAIMug es un evento 100% realizado por la comunidad con el apoyo de:
+
+- **Innovation Smart District** :
+  - [Web](https://www.isdistrict.com/es)
+  - [Instagram](https://www.instagram.com/innovationsmartdistrict)
+
+![ISD](./static/logo-patrocinante/isd_logo.png)
+
+___
