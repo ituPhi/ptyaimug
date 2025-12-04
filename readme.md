@@ -33,7 +33,7 @@ Las sesiones están pensadas para ser dinámicas, útiles y accesibles:
 ## ¿ Donde ? 
 Oficina. Green Valley Panamá SA Calle 54 Este, Casa 9 (Marbella) Ciudad de Panamá.  
 
-Para ver el documento detallado de la estructura para cada charla revisa ./dates-topics/meet-up-date.md
+Para ver el documento detallado de la estructura para cada charla revisa ./dates/meet-up-date.md
 
 ___
 
