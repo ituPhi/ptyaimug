@@ -30,6 +30,9 @@ Las sesiones están pensadas para ser dinámicas, útiles y accesibles:
 - 7:00 – 7:45 Lightning Talks (3 espacios)
 - 7:45 – 8:00 Networking final + transición a off-site
 
+## ¿ Donde ? 
+Oficina. Green Valley Panamá SA Calle 54 Este, Casa 9 (Marbella) Ciudad de Panamá.  
+
 Para ver el documento detallado de la estructura para cada charla revisa ./dates-topics/meet-up-date.md
 
 ___
