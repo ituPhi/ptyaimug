@@ -1,3 +1,7 @@
+
+
+![PTY AIMUG Banner](./static/art-template/PTY-AIMUG-BANNER.png)
+
 # Panama AIMUG — Comunidad de AI Middleware 🇵🇦
 
 Bienvenido al repositorio oficial del **Panama AI Middleware User Group (AIMUG)**, una comunidad de desarrolladores, emprendedores, diseñadores y profesionales curiosos que quieren aprender, construir y explorar el mundo del **AI middleware**.
