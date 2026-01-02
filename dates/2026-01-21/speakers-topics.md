@@ -1,13 +1,13 @@
 
 ## Detalles
 
-## Lightning talk #1 - Andy (Reprompt) (TBD):
+## Lightning talk #1 - Andy Caballero: 
 - 
 
-## Lightning talk #2 - Juan () :
+## Lightning talk #2 - Juan Iturbe: 
 - 
 
-## Lightning talk #3 - Rolando (TBD):
+## Lightning talk #3 - Rolando Perez: Patrones de desarrollo con AI
 - 
 
 
