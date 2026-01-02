@@ -33,6 +33,7 @@ Date: Wednesday, January 21, 2026
 Time: 6:00 PM – 8:00 PM
 Office: Green Valley Panamá SA, Calle 54 Este, Casa 9 (Marbella), Panama City
 Space is limited, so please RSVP and arrive on time.
+Location: [Calle 54 Este, Casa 9 (Marbella) Ciudad de Panamá.](https://maps.app.goo.gl/LNvPfDV43h84YjWM8)
 
 ### Agenda
 6:00 PM – 6:20 PM Networking
@@ -41,8 +42,7 @@ Space is limited, so please RSVP and arrive on time.
 6:50 PM – 7:00 PM Latest News on AI Middleware
 7:00 PM – 7:45 PM Thunderstorm Talks
 7:45 ​​PM – 8:00 PM Networking and Transition to Working Outside the Office
-8:00 PM – ??? Off-site Discussion Location TBD
-***
+8:00 PM – ??? Off-site Discussion Location La Rana Dorada Marbella
 
 ### About AIMUG
 The AI ​​Middleware User Group believes in "Open Learning." We experiment with LangChain, LangGraph, LangSmith, and the broader AI stack, sharing demos, challenges, and successes to help everyone improve.
