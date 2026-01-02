@@ -3,11 +3,12 @@
 
 Grupo de Usuarios de Middleware de IA (AIMUG)
 Esta reunión se realizará en espanol.
-Fecha: Miércoles, 21 de enero de 2026
-Hora: 18:00 – 20:00
-Oficina. Green Valley Panamá SA Calle 54 Este, Casa 9 (Marbella) Ciudad de Panamá.
-Tendremos capacidad limitada, así que por favor confirma tu asistencia y llega a tiempo.
-Ubicación: [Calle 54 Este, Casa 9 (Marbella) Ciudad de Panamá.](https://maps.app.goo.gl/LNvPfDV43h84YjWM8)
+
+- Fecha: Miércoles, 21 de enero de 2026
+- Hora: 18:00 – 20:00
+- Oficina. Green Valley Panamá SA Calle 54 Este, Casa 9 (Marbella) Ciudad de Panamá.
+- Tendremos capacidad limitada, así que por favor confirma tu asistencia y llega a tiempo.
+- Ubicación: [Calle 54 Este, Casa 9 (Marbella) Ciudad de Panamá.](https://maps.app.goo.gl/LNvPfDV43h84YjWM8)
 
 ### Agenda
 - 18:00 – 18:20 Networking
