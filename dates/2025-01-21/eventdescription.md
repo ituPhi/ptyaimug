@@ -30,11 +30,12 @@ El Grupo de Reunión AIMUG de Panamá está afiliado al Grupo de Reunión Austin
 ## January Monthly Meeting and Presentation
 AI Middleware User Group (AIMUG)
 This meeting will be held in Spanish.
-Date: Wednesday, January 21, 2026
-Time: 6:00 PM – 8:00 PM
-Office: Green Valley Panamá SA, Calle 54 Este, Casa 9 (Marbella), Panama City
-Space is limited, so please RSVP and arrive on time.
-Location: [Calle 54 Este, Casa 9 (Marbella) Ciudad de Panamá.](https://maps.app.goo.gl/LNvPfDV43h84YjWM8)
+
+- Date: Wednesday, January 21, 2026
+- Time: 6:00 PM – 8:00 PM
+- Office: Green Valley Panamá SA, Calle 54 Este, Casa 9 (Marbella), Panama City
+- Space is limited, so please RSVP and arrive on time.
+- Location: [Calle 54 Este, Casa 9 (Marbella) Ciudad de Panamá.](https://maps.app.goo.gl/LNvPfDV43h84YjWM8)
 
 ### Agenda
 - 6:00 PM – 6:20 PM Networking
