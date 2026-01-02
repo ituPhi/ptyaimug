@@ -10,13 +10,13 @@ Tendremos capacidad limitada, así que por favor confirma tu asistencia y llega 
 Ubicación: [Calle 54 Este, Casa 9 (Marbella) Ciudad de Panamá.](https://maps.app.goo.gl/LNvPfDV43h84YjWM8)
 
 ### Agenda
-18:00 – 18:20 Networking
-18:20 – 18:35 Bienvenida & Presentación
-18:35 - 18:50 Introducción al AI Middleware
-18:50 - 19:00 Noticias recientes del AI Middleware
-19:00 – 19:45 Lightning Talks (3 espacios)
-19:45 - 20:00 Networking final + transición a off-site
-20:00 - ??? Ubicación de discusión fuera del sitio Rana Dorada Marbella
+- 18:00 – 18:20 Networking
+- 18:20 – 18:35 Bienvenida & Presentación
+- 18:35 - 18:50 Introducción al AI Middleware
+- 18:50 - 19:00 Noticias recientes del AI Middleware
+- 19:00 – 19:45 Lightning Talks (3 espacios)
+- 19:45 - 20:00 Networking final + transición a off-site
+- 20:00 - ??? Ubicación de discusión fuera del sitio Rana Dorada Marbella
 
 ***
 ### Acerca de AIMUG
@@ -36,15 +36,15 @@ Space is limited, so please RSVP and arrive on time.
 Location: [Calle 54 Este, Casa 9 (Marbella) Ciudad de Panamá.](https://maps.app.goo.gl/LNvPfDV43h84YjWM8)
 
 ### Agenda
-6:00 PM – 6:20 PM Networking
-6:20 PM – 6:35 PM Welcome and Group Introductions
-6:35 PM – 6:50 PM Introduction to AI Middleware
-6:50 PM – 7:00 PM Latest News on AI Middleware
-7:00 PM – 7:45 PM Thunderstorm Talks
-7:45 ​​PM – 8:00 PM Networking and Transition to Working Outside the Office
-8:00 PM – ??? Off-site Discussion Location La Rana Dorada Marbella
+- 6:00 PM – 6:20 PM Networking
+- 6:20 PM – 6:35 PM Welcome and Group Introductions
+- 6:35 PM – 6:50 PM Introduction to AI Middleware
+- 6:50 PM – 7:00 PM Latest News on AI Middleware
+- 7:00 PM – 7:45 PM Thunderstorm Talks
+- 7:45 PM – 8:00 PM Networking and Transition to Working Outside the Office
+- 8:00 PM – ??? Off-site Discussion Location La Rana Dorada Marbella
 
 ### About AIMUG
-The AI ​​Middleware User Group believes in "Open Learning." We experiment with LangChain, LangGraph, LangSmith, and the broader AI stack, sharing demos, challenges, and successes to help everyone improve.
+The AI Middleware User Group believes in "Open Learning." We experiment with LangChain, LangGraph, LangSmith, and the broader AI stack, sharing demos, challenges, and successes to help everyone improve.
 ### About the AIMUG Panama Meeting Group
 The AIMUG Panama Meeting Group is affiliated with the Austin Langchain Meeting Group in Austin, Texas, USA, arguably the largest and best-organized Langchain community in the world.
