@@ -312,6 +312,8 @@
 
     @media (max-width: 900px) {
       .grid.three, .trend-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .speaker-grid { grid-template-columns: 1fr; }
+      .speaker-card { min-height: 13rem; }
       .split { grid-template-columns: 1fr; gap: 1.5rem; }
       .slide { align-content: start; }
     }
@@ -325,6 +327,68 @@
       .help { display: none; }
       .control { min-width: auto; padding-inline: 0.8rem; }
       h1 { font-size: clamp(3rem, 17vw, 5rem); }
+    }
+
+    .speaker-intro {
+      max-width: 28ch;
+      margin-bottom: 2.3rem;
+    }
+
+    .speaker-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: clamp(1rem, 3vw, 2rem);
+    }
+
+    .speaker-card {
+      position: relative;
+      min-height: 17rem;
+      padding: clamp(1.5rem, 3.5vw, 2.5rem);
+      overflow: hidden;
+      background: linear-gradient(145deg, rgba(17, 43, 36, 0.98), rgba(8, 25, 21, 0.94));
+      border: 1px solid rgba(115, 224, 178, 0.28);
+      border-radius: 1.25rem;
+    }
+
+    .speaker-card::after {
+      content: "";
+      position: absolute;
+      right: -4rem;
+      bottom: -5rem;
+      width: 13rem;
+      aspect-ratio: 1;
+      background: radial-gradient(circle, rgba(98, 204, 224, 0.14), transparent 68%);
+      border: 1px solid rgba(98, 204, 224, 0.18);
+      border-radius: 50%;
+    }
+
+    .speaker-name {
+      display: block;
+      margin-bottom: 0.35rem;
+      color: var(--mint);
+      font-size: clamp(1.25rem, 2.4vw, 1.8rem);
+      font-weight: 800;
+      letter-spacing: -0.025em;
+    }
+
+    .speaker-org {
+      display: block;
+      margin-bottom: 2.2rem;
+      color: var(--aqua);
+      font-size: 0.8rem;
+      font-weight: 750;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .speaker-talk {
+      position: relative;
+      z-index: 1;
+      max-width: 20ch;
+      margin: 0;
+      font-size: clamp(1.4rem, 2.7vw, 2.2rem);
+      line-height: 1.12;
+      text-wrap: balance;
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -373,6 +437,22 @@
     <section class="slide" id="slide-14" data-title="Aplicación" aria-labelledby="title-14"><div class="slide-inner"><p class="eyebrow">10 · Agente didáctico</p><h2 id="title-14">El modelo es una pieza reemplazable</h2><p class="lede">Validar alcance → planificar → decidir contenido → recuperar por MCP → validar estructura y pedagogía → renderizar → evaluar.</p></div></section>
     <section class="slide" id="slide-15" data-title="Benchmark" aria-labelledby="title-15"><div class="slide-inner"><p class="eyebrow">Evaluar el sistema</p><h2 id="title-15">Separa calidad del modelo de calidad del sistema</h2><p class="lede">Mide resultado, contrato, trayectoria, grounding, seguridad, latencia, costo, reintentos y correcciones humanas.</p><div class="grid three"><article class="card"><h3>Resultado</h3><p>Validez pedagógica y completitud.</p></article><article class="card"><h3>Contrato</h3><p>JSON, IDs y restricciones.</p></article><article class="card"><h3>Trayectoria</h3><p>Herramientas y recuperación.</p></article><article class="card"><h3>Grounding</h3><p>Currículo recuperado, no inventado.</p></article><article class="card"><h3>Seguridad</h3><p>Alcance y privacidad.</p></article><article class="card"><h3>Operación</h3><p>Latencia, costo y correcciones.</p></article></div></div></section>
     <section class="slide" id="slide-16" data-title="Cierre" aria-labelledby="title-16"><div class="slide-inner"><p class="eyebrow">Panama AIMUG · 19 de agosto de 2026</p><h2 id="title-16">La ventaja defendible está alrededor del modelo</h2><p class="lede">Contratos de dominio. Permisos. Integraciones. Recuperación. Evaluación. Observabilidad.</p></div></section>
+    <section class="slide" id="slide-17" data-title="Presentadores de hoy" aria-labelledby="title-17"><div class="slide-inner">
+      <p class="eyebrow">Panama AIMUG · En el escenario esta noche</p>
+      <h2 class="speaker-intro" id="title-17">Nuestros presentadores de hoy</h2>
+      <div class="speaker-grid">
+        <article class="speaker-card">
+          <span class="speaker-name">Andy Caballero</span>
+          <span class="speaker-org">Ketzai</span>
+          <h3 class="speaker-talk">“How does an AI Native Company actually work?”</h3>
+        </article>
+        <article class="speaker-card">
+          <span class="speaker-name">Dave Sottimano</span>
+          <span class="speaker-org">Featured speaker</span>
+          <h3 class="speaker-talk">“Getting Back on the Soapbox: How We Lost Our Voice and How to Take It Back”</h3>
+        </article>
+      </div>
+    </div></section>
   </main>
 
   <nav class="deck-controls" aria-label="Controles de la presentación">
@@ -381,10 +461,10 @@
       <button class="control" id="next" type="button" aria-label="Diapositiva siguiente" title="Diapositiva siguiente">Siguiente</button>
     </div>
     <div class="progress-wrap">
-      <div class="progress-track" role="progressbar" aria-label="Progreso de la presentación" aria-valuemin="1" aria-valuemax="16" aria-valuenow="1">
+      <div class="progress-track" role="progressbar" aria-label="Progreso de la presentación" aria-valuemin="1" aria-valuemax="17" aria-valuenow="1">
         <div class="progress-bar"></div>
       </div>
-      <div class="counter" aria-live="polite"><span id="current">01</span> / <span id="total">16</span></div>
+      <div class="counter" aria-live="polite"><span id="current">01</span> / <span id="total">17</span></div>
     </div>
     <div class="help">Flechas · Espacio · Inicio / Fin</div>
   </nav>
