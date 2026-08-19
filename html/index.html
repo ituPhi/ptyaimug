@@ -1,0 +1,670 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>Informe de investigación sobre IA — 15 de julio de 2026 | Panama AIMUG</title>
+  <style>
+    :root {
+      --ink: #f5f7f3;
+      --muted: #b9c4c0;
+      --dim: #84918d;
+      --night: #071512;
+      --panel: #0d211c;
+      --panel-2: #112b24;
+      --line: rgba(209, 243, 229, 0.16);
+      --mint: #73e0b2;
+      --aqua: #62cce0;
+      --sun: #f2c45b;
+      --slide-pad: clamp(1.5rem, 5vw, 5rem);
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body { margin: 0; min-height: 100%; }
+
+    body {
+      overflow: hidden;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 15% 15%, rgba(98, 204, 224, 0.11), transparent 30rem),
+        radial-gradient(circle at 85% 80%, rgba(115, 224, 178, 0.09), transparent 32rem),
+        var(--night);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.45;
+    }
+
+    button { font: inherit; }
+
+    .skip-link {
+      position: fixed;
+      z-index: 20;
+      top: 0.75rem;
+      left: 0.75rem;
+      padding: 0.65rem 0.9rem;
+      color: var(--night);
+      background: var(--mint);
+      border-radius: 0.4rem;
+      transform: translateY(-180%);
+    }
+
+    .skip-link:focus { transform: translateY(0); }
+
+    .deck { position: relative; min-height: 100dvh; }
+
+    .slide {
+      position: absolute;
+      inset: 0;
+      display: none;
+      min-height: 100dvh;
+      overflow-y: auto;
+      padding: var(--slide-pad) var(--slide-pad) clamp(5.8rem, 11vh, 7rem);
+      isolation: isolate;
+    }
+
+    .slide::before {
+      content: "";
+      position: fixed;
+      z-index: -1;
+      width: min(36vw, 30rem);
+      aspect-ratio: 1;
+      right: -12vw;
+      top: -16vw;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      box-shadow: 0 0 0 4rem rgba(115, 224, 178, 0.025), 0 0 0 8rem rgba(98, 204, 224, 0.02);
+    }
+
+    .slide.is-active {
+      display: grid;
+      align-content: center;
+      animation: enter 420ms ease-out both;
+    }
+
+    @keyframes enter {
+      from { opacity: 0; transform: translateY(0.7rem); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .slide-inner { width: min(100%, 78rem); margin: 0 auto; }
+    .slide-inner.narrow { width: min(100%, 62rem); }
+
+    .eyebrow {
+      margin: 0 0 1rem;
+      color: var(--mint);
+      font-size: clamp(0.72rem, 1.2vw, 0.9rem);
+      font-weight: 750;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    h1, h2, h3, p { margin-top: 0; }
+
+    h1 {
+      max-width: 12ch;
+      margin-bottom: 1.25rem;
+      font-size: clamp(3rem, 9vw, 8rem);
+      font-weight: 800;
+      letter-spacing: -0.065em;
+      line-height: 0.91;
+    }
+
+    h2 {
+      max-width: 18ch;
+      margin-bottom: clamp(1.5rem, 4vh, 3.4rem);
+      font-size: clamp(2.1rem, 5.7vw, 5.2rem);
+      font-weight: 780;
+      letter-spacing: -0.05em;
+      line-height: 0.98;
+      text-wrap: balance;
+    }
+
+    h3 {
+      margin-bottom: 0.55rem;
+      font-size: clamp(1rem, 1.8vw, 1.35rem);
+      line-height: 1.2;
+    }
+
+    .lede {
+      max-width: 48rem;
+      margin-bottom: 1.8rem;
+      color: var(--muted);
+      font-size: clamp(1.05rem, 2.2vw, 1.55rem);
+      text-wrap: pretty;
+    }
+
+    .accent { color: var(--mint); }
+    .warm { color: var(--sun); }
+
+    .meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem 1.6rem;
+      margin-top: 2.3rem;
+      color: var(--dim);
+      font-size: 0.92rem;
+    }
+
+    .meta-row strong { color: var(--ink); }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: clamp(0.8rem, 2vw, 1.4rem);
+    }
+
+    .grid.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+    .card {
+      min-width: 0;
+      padding: clamp(1rem, 2.4vw, 1.7rem);
+      background: linear-gradient(145deg, rgba(17, 43, 36, 0.94), rgba(10, 28, 23, 0.88));
+      border: 1px solid var(--line);
+      border-radius: 1rem;
+    }
+
+    .card p, .card li { color: var(--muted); }
+    .card p:last-child { margin-bottom: 0; }
+
+    .number {
+      display: block;
+      margin-bottom: 0.85rem;
+      color: var(--aqua);
+      font-variant-numeric: tabular-nums;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+    }
+
+    .big-statement {
+      max-width: 22ch;
+      margin-bottom: 0;
+      font-size: clamp(1.9rem, 4.3vw, 4rem);
+      font-weight: 730;
+      letter-spacing: -0.035em;
+      line-height: 1.08;
+      text-wrap: balance;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(18rem, 0.8fr);
+      align-items: start;
+      gap: clamp(1.5rem, 5vw, 5rem);
+    }
+
+    .stack { display: grid; gap: 0.75rem; }
+
+    .signal {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 1rem;
+      align-items: start;
+      padding: 1rem 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .signal:last-child { border-bottom: 1px solid var(--line); }
+    .signal strong { color: var(--mint); font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; }
+    .signal p { margin: 0; color: var(--muted); }
+
+    .flow {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      align-items: stretch;
+      gap: 0.8rem;
+      margin-top: 2rem;
+    }
+
+    .flow .card { position: relative; }
+    .flow .card:not(:last-child)::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      right: -0.8rem;
+      width: 0.8rem;
+      border-top: 1px solid var(--aqua);
+    }
+
+    .source-note {
+      margin-top: 1.5rem;
+      padding-top: 1.2rem;
+      border-top: 1px solid var(--line);
+      color: var(--dim);
+      font-size: 0.88rem;
+    }
+
+    .source-note strong { color: var(--muted); }
+
+    .trend-list {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 0.7rem;
+      counter-reset: trends;
+    }
+
+    .trend-list .card { counter-increment: trends; }
+    .trend-list .card::before {
+      content: "0" counter(trends);
+      display: block;
+      margin-bottom: 1.2rem;
+      color: var(--aqua);
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+    }
+
+    .checklist { list-style: none; padding: 0; margin: 0; }
+    .checklist li {
+      position: relative;
+      padding: 0.8rem 0 0.8rem 1.6rem;
+      color: var(--muted);
+      border-top: 1px solid var(--line);
+    }
+    .checklist li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 1.25rem;
+      width: 0.55rem;
+      height: 0.55rem;
+      background: var(--mint);
+      border-radius: 50%;
+    }
+
+    .deck-controls {
+      position: fixed;
+      z-index: 10;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: grid;
+      grid-template-columns: auto minmax(7rem, 1fr) auto;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.8rem clamp(1rem, 3vw, 2.2rem) 1rem;
+      background: linear-gradient(transparent, rgba(7, 21, 18, 0.98) 38%);
+    }
+
+    .control-group { display: flex; gap: 0.55rem; }
+
+    .control {
+      min-width: 4.8rem;
+      padding: 0.58rem 0.9rem;
+      color: var(--ink);
+      background: rgba(17, 43, 36, 0.92);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      cursor: pointer;
+    }
+
+    .control:hover { border-color: var(--mint); }
+    .control:disabled { opacity: 0.35; cursor: not-allowed; }
+
+    :focus-visible { outline: 3px solid var(--sun); outline-offset: 3px; }
+
+    .progress-wrap { display: grid; grid-template-columns: minmax(4rem, 1fr) auto; align-items: center; gap: 0.9rem; }
+    .progress-track { height: 0.25rem; overflow: hidden; background: var(--line); border-radius: 1rem; }
+    .progress-bar { width: 0; height: 100%; background: linear-gradient(90deg, var(--aqua), var(--mint)); transition: width 300ms ease; }
+    .counter { min-width: 4.3rem; color: var(--muted); font-size: 0.84rem; font-variant-numeric: tabular-nums; text-align: right; }
+
+    .help { color: var(--dim); font-size: 0.76rem; text-align: right; }
+
+    @media (max-width: 900px) {
+      .grid.three, .trend-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .split { grid-template-columns: 1fr; gap: 1.5rem; }
+      .slide { align-content: start; }
+    }
+
+    @media (max-width: 620px) {
+      :root { --slide-pad: 1.2rem; }
+      .slide { padding-top: 3.2rem; }
+      .grid, .grid.three, .trend-list, .flow { grid-template-columns: 1fr; }
+      .flow .card:not(:last-child)::after { display: none; }
+      .deck-controls { grid-template-columns: auto 1fr; gap: 0.6rem; }
+      .help { display: none; }
+      .control { min-width: auto; padding-inline: 0.8rem; }
+      h1 { font-size: clamp(3rem, 17vw, 5rem); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    }
+
+    @media print {
+      @page { size: landscape; margin: 0; }
+      body { overflow: visible; background: #fff; color: #10201b; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+      .deck-controls, .skip-link { display: none !important; }
+      .deck { min-height: 0; }
+      .slide, .slide.is-active {
+        position: relative;
+        display: grid !important;
+        min-height: 100vh;
+        height: 100vh;
+        overflow: hidden;
+        padding: 5vh 6vw;
+        color: var(--ink);
+        background: var(--night);
+        break-after: page;
+        page-break-after: always;
+        animation: none;
+      }
+      .slide:last-child { break-after: auto; page-break-after: auto; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#current-slide">Ir a la diapositiva actual</a>
+
+  <main class="deck" aria-label="Presentación del informe de investigación sobre IA">
+    <section class="slide is-active" id="slide-1" data-title="Portada" aria-labelledby="title-1">
+      <div class="slide-inner">
+        <p class="eyebrow">Panama AIMUG · Informe de investigación</p>
+        <h1 id="title-1">Informe de investigación sobre IA</h1>
+        <p class="lede">Una lectura para quienes construyen con IA sobre el panorama reportado al 15 de julio de 2026.</p>
+        <div class="meta-row">
+          <span><strong>15 de julio de 2026</strong></span>
+          <span>Modelos · infraestructura · agentes · políticas públicas · trabajo</span>
+        </div>
+        <p class="source-note"><strong>Contexto de la fuente:</strong> conversación compartida de ChatGPT titulada “Latest AI News Summary”. <strong>Prompt original:</strong> “give me a detailed research of latest ai news”. Las afirmaciones, nombres, fechas y cifras provienen de ese resumen, que no incluía una bibliografía consultable, y requieren verificación independiente.</p>
+      </div>
+    </section>
+
+    <section class="slide" id="slide-2" data-title="Mapa del informe" aria-labelledby="title-2">
+      <div class="slide-inner">
+        <p class="eyebrow">El informe en cuatro preguntas</p>
+        <h2 id="title-2">¿Qué cambió y por qué importa?</h2>
+        <div class="grid">
+          <article class="card"><span class="number">01</span><h3>Capacidad técnica</h3><p>Cómo la carrera de modelos y las interfaces de voz están cambiando la experiencia del producto.</p></article>
+          <article class="card"><span class="number">02</span><h3>Capacidad de cómputo</h3><p>Por qué la inversión en infraestructura, el gasto de capital y el posicionamiento en la nube determinan lo que se puede lanzar.</p></article>
+          <article class="card"><span class="number">03</span><h3>Control</h3><p>Cómo las plataformas, las reglas para rastreadores y la actividad gubernamental redistribuyen el acceso y el poder.</p></article>
+          <article class="card"><span class="number">04</span><h3>Consecuencias</h3><p>Qué implican la investigación sobre agentes y los cambios laborales para la ingeniería práctica de IA.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" id="slide-3" data-title="Carrera de modelos" aria-labelledby="title-3">
+      <div class="slide-inner">
+        <p class="eyebrow">01 · Carrera de modelos</p>
+        <h2 id="title-3">La competencia pasa de la tabla de posiciones a una <span class="accent">decisión de sistema.</span></h2>
+        <div class="split">
+          <p class="big-statement">El “mejor modelo” importa menos que el mejor equilibrio entre calidad, latencia, costo y control.</p>
+          <div class="stack">
+            <div class="signal"><strong>Competencia</strong><p>El resumen describe un ritmo intenso de competencia entre modelos y anuncios sobre sus capacidades.</p></div>
+            <div class="signal"><strong>Cambio</strong><p>La elección del modelo forma cada vez más parte de la arquitectura de enrutamiento, evaluación y respaldo.</p></div>
+            <div class="signal"><strong>Para quienes construyen IA</strong><p>Prueba con tu propia carga de trabajo; trata las afirmaciones de los proveedores como hipótesis.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" id="slide-4" data-title="Inversión en infraestructura" aria-labelledby="title-4">
+      <div class="slide-inner">
+        <p class="eyebrow">02 · Inversión en infraestructura</p>
+        <h2 id="title-4">El cómputo se está convirtiendo en estrategia.</h2>
+        <p class="lede">El resumen compartido presenta la infraestructura de IA como una competencia amplia y sostenida por capacidad, no solo como un gasto operativo.</p>
+        <div class="flow">
+          <article class="card"><span class="number">Oferta</span><h3>Construir capacidad</h3><p>Los centros de datos, chips, energía y redes limitan la frontera.</p></article>
+          <article class="card"><span class="number">Economía</span><h3>Utilizar la capacidad</h3><p>El uso, la eficiencia y el servicio de modelos determinan si la inversión se convierte en ventaja.</p></article>
+          <article class="card"><span class="number">Productos</span><h3>Monetizar la capacidad</h3><p>Las capas de nube, plataforma y aplicaciones convierten la infraestructura en valor para el cliente.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" id="slide-5" data-title="Gasto de capital de las grandes tecnológicas" aria-labelledby="title-5">
+      <div class="slide-inner">
+        <p class="eyebrow">03 · Gasto de capital de las grandes tecnológicas</p>
+        <h2 id="title-5">El gasto de capital es una señal, <span class="warm">no una prueba de rentabilidad.</span></h2>
+        <div class="grid three">
+          <article class="card"><h3>Qué indica</h3><p>Confianza en que la demanda de IA y la competencia estratégica continuarán.</p></article>
+          <article class="card"><h3>Qué pone bajo presión</h3><p>Los márgenes, el acceso a energía, la velocidad de despliegue y la necesidad de aprovechar la capacidad.</p></article>
+          <article class="card"><h3>Qué observar</h3><p>Si la capacidad se traduce en mejores productos, menores costos unitarios y un uso sostenido por parte de los clientes.</p></article>
+        </div>
+        <p class="source-note">No se reproduce aquí ninguna cifra de gasto de capital porque el resumen proporcionado no incluía fuentes consultables para verificarla.</p>
+      </div>
+    </section>
+
+    <section class="slide" id="slide-6" data-title="IA de voz" aria-labelledby="title-6">
+      <div class="slide-inner">
+        <p class="eyebrow">04 · IA de voz</p>
+        <h2 id="title-6">La voz convierte una respuesta de IA en una interacción en vivo.</h2>
+        <div class="split">
+          <div>
+            <p class="big-statement">El reto del producto ya no es solo la transcripción. Es el ciclo completo de la conversación.</p>
+          </div>
+          <ul class="checklist" aria-label="Consideraciones de ingeniería para IA de voz">
+            <li>La latencia y el manejo de interrupciones determinan si una conversación se siente natural.</li>
+            <li>Las llamadas a herramientas necesitan confirmaciones claras, vías de recuperación y trazabilidad.</li>
+            <li>La evaluación debe incluir pruebas de acentos, idiomas y entornos ruidosos.</li>
+            <li>El consentimiento y la transparencia deben formar parte del diseño de la captura y la reproducción.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" id="slide-7" data-title="Estrategia de Apple" aria-labelledby="title-7">
+      <div class="slide-inner">
+        <p class="eyebrow">05 · Estrategia de Apple</p>
+        <h2 id="title-7">La historia reportada sobre Apple gira en torno a la <span class="accent">ventaja de la integración.</span></h2>
+        <p class="lede">Según el resumen compartido, la pregunta estratégica para Apple es cómo integrar la IA entre dispositivos, software y confianza del usuario, no solo qué modelo gana.</p>
+        <div class="grid three">
+          <article class="card"><span class="number">01</span><h3>Distribución</h3><p>La IA puede llegar a través de la relación existente con los dispositivos y sistemas operativos.</p></article>
+          <article class="card"><span class="number">02</span><h3>Arquitectura</h3><p>La ejecución en el dispositivo y en la nube plantea distintos equilibrios entre privacidad, capacidad y latencia.</p></article>
+          <article class="card"><span class="number">03</span><h3>Experiencia</h3><p>Los flujos de trabajo integrados pueden importar más a los usuarios que la marca del modelo.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" id="slide-8" data-title="Giro de Meta" aria-labelledby="title-8">
+      <div class="slide-inner">
+        <p class="eyebrow">06 · Giro de Meta hacia la infraestructura y la nube</p>
+        <h2 id="title-8">Del acceso a modelos al posicionamiento en infraestructura.</h2>
+        <div class="split">
+          <p class="big-statement">El resumen presenta la dirección de Meta como una apuesta más amplia por modelos, cómputo y servicios similares a la nube.</p>
+          <div class="stack">
+            <div class="signal"><strong>Primera pregunta</strong><p>¿Quién controla la capa de servicio y la relación con los desarrolladores?</p></div>
+            <div class="signal"><strong>Segunda pregunta</strong><p>¿Cómo convive la apertura con la economía de la infraestructura?</p></div>
+            <div class="signal"><strong>Tercera pregunta</strong><p>¿Qué partes son productos, alianzas u opciones estratégicas?</p></div>
+          </div>
+        </div>
+        <p class="source-note">“Giro” es el encuadre del resumen compartido; verifica de forma independiente los anuncios subyacentes y su alcance.</p>
+      </div>
+    </section>
+
+    <section class="slide" id="slide-9" data-title="Controles para rastreadores" aria-labelledby="title-9">
+      <div class="slide-inner">
+        <p class="eyebrow">07 · Controles de Cloudflare para rastreadores</p>
+        <h2 id="title-9">La web abierta está negociando nuevas reglas de acceso para la IA.</h2>
+        <p class="lede">El resumen destaca los controles de Cloudflare para rastreadores como parte de un cambio mayor: los propietarios de sitios quieren más control sobre la recopilación, el acceso y el intercambio de valor.</p>
+        <div class="grid">
+          <article class="card"><h3>Para quienes publican</h3><p>El control, la atribución y las preferencias aplicables se acercan a la capa de infraestructura.</p></article>
+          <article class="card"><h3>Para quienes construyen IA</h3><p>Respetar las reglas de acceso, la procedencia y las licencias se convierte en un requisito de arquitectura.</p></article>
+          <article class="card"><h3>Para sistemas RAG</h3><p>Que algo sea “recuperable” no significa que esté permitido, actualizado o sea confiable.</p></article>
+          <article class="card"><h3>Pregunta abierta</h3><p>¿Qué intercambio sostenible puede respaldar tanto una IA útil como un ecosistema de información saludable?</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" id="slide-10" data-title="Actividad gubernamental" aria-labelledby="title-10">
+      <div class="slide-inner">
+        <p class="eyebrow">08 · Actividad gubernamental</p>
+        <h2 id="title-10">Los gobiernos están definiendo reglas, comprando tecnología y actuando sobre la infraestructura.</h2>
+        <div class="grid three">
+          <article class="card"><span class="number">Reglas</span><h3>Gobernanza</h3><p>La seguridad, transparencia, competencia, gestión de datos y las obligaciones sectoriales moldean el despliegue.</p></article>
+          <article class="card"><span class="number">Demanda</span><h3>Contratación pública</h3><p>La adopción en el sector público puede establecer requisitos de seguridad, auditoría y soberanía.</p></article>
+          <article class="card"><span class="number">Oferta</span><h3>Capacidad</h3><p>La energía, los chips, la investigación y la infraestructura nacional entran en la estrategia industrial.</p></article>
+        </div>
+        <p class="source-note">Las jurisdicciones y acciones específicas requieren verificación fuente por fuente; esta presentación conserva únicamente el tema general del resumen compartido.</p>
+      </div>
+    </section>
+
+    <section class="slide" id="slide-11" data-title="Cambios laborales" aria-labelledby="title-11">
+      <div class="slide-inner">
+        <p class="eyebrow">09 · Cambios laborales</p>
+        <h2 id="title-11">El trabajo se está reconfigurando tarea por tarea.</h2>
+        <div class="split">
+          <div>
+            <p class="big-statement">La unidad de análisis útil es el flujo de trabajo, no una predicción llamativa sobre empleos completos.</p>
+            <p class="source-note">El resumen compartido presenta el cambio laboral como un tema importante, pero no aporta aquí evidencia consultable suficiente para cuantificar su impacto.</p>
+          </div>
+          <ul class="checklist" aria-label="Preguntas sobre los cambios laborales">
+            <li>¿Qué tareas se aceleran, se delegan o ahora son posibles?</li>
+            <li>¿Dónde sigue siendo decisiva la revisión humana?</li>
+            <li>¿Qué habilidades se desplazan hacia el criterio, el contexto y la orquestación?</li>
+            <li>¿Cómo medirán los equipos la calidad, y no solo el volumen de trabajo?</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" id="slide-12" data-title="Investigación sobre agentes" aria-labelledby="title-12">
+      <div class="slide-inner">
+        <p class="eyebrow">10 · Investigación sobre agentes</p>
+        <h2 id="title-12">Los agentes amplían el ciclo: de responder a actuar.</h2>
+        <div class="flow">
+          <article class="card"><span class="number">Planificar</span><h3>Descomponer</h3><p>Traducir un objetivo en pasos acotados y criterios de éxito explícitos.</p></article>
+          <article class="card"><span class="number">Actuar</span><h3>Usar herramientas</h3><p>Recuperar información, calcular, llamar a sistemas y conservar la procedencia durante el proceso.</p></article>
+          <article class="card"><span class="number">Comprobar</span><h3>Evaluar</h3><p>Verificar resultados, mostrar la incertidumbre y derivar a personas las decisiones importantes.</p></article>
+        </div>
+        <p class="lede" style="margin-top: 1.5rem;">El avance de la investigación aumenta la importancia de la observabilidad, los permisos, las condiciones de parada y las evaluaciones reproducibles.</p>
+      </div>
+    </section>
+
+    <section class="slide" id="slide-13" data-title="Cinco tendencias" aria-labelledby="title-13">
+      <div class="slide-inner">
+        <p class="eyebrow">Síntesis</p>
+        <h2 id="title-13">Cinco tendencias conectan el informe.</h2>
+        <div class="trend-list">
+          <article class="card"><h3>Los modelos se vuelven componentes</h3><p>La selección se orienta al encaje con el sistema completo.</p></article>
+          <article class="card"><h3>El cómputo se vuelve una ventaja</h3><p>La capacidad y la eficiencia moldean la competencia.</p></article>
+          <article class="card"><h3>Las interfaces se integran al entorno</h3><p>La voz lleva la IA a flujos de trabajo en vivo.</p></article>
+          <article class="card"><h3>El acceso se vuelve regulado</h3><p>Las plataformas y las políticas definen los permisos.</p></article>
+          <article class="card"><h3>El software se vuelve agéntico</h3><p>Los sistemas planifican, usan herramientas y requieren controles.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" id="slide-14" data-title="Implicaciones para quienes construyen IA" aria-labelledby="title-14">
+      <div class="slide-inner">
+        <p class="eyebrow">Para quienes construyen con IA</p>
+        <h2 id="title-14">Construye para el cambio sin intentar construir para todo.</h2>
+        <div class="grid">
+          <article class="card"><span class="number">Evaluar</span><h3>Hazte cargo de la evidencia</h3><p>Usa evaluaciones específicas por tarea, trazas y análisis de fallos en lugar de confiar en la reputación del modelo.</p></article>
+          <article class="card"><span class="number">Abstraer</span><h3>Mantén límites prácticos</h3><p>Separa los límites entre modelo, recuperación y herramientas donde el cambio ya sea probable.</p></article>
+          <article class="card"><span class="number">Gobernar</span><h3>Diseña los permisos</h3><p>Aplica privilegios mínimos, procedencia y aprobación humana a las acciones importantes.</p></article>
+          <article class="card"><span class="number">Operar</span><h3>Mide el ciclo completo</h3><p>Observa en conjunto la calidad, latencia, costo, recuperación y resultados para el usuario.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" id="slide-15" data-title="Cierre y contexto de la fuente" aria-labelledby="title-15">
+      <div class="slide-inner narrow">
+        <p class="eyebrow">Panama AIMUG · Cierre</p>
+        <h2 id="title-15">Convierte las noticias en mejores preguntas.</h2>
+        <p class="big-statement"><span class="accent">Verifica la afirmación.</span> Prueba el flujo de trabajo. Comparte lo que aprendas.</p>
+        <div class="meta-row">
+          <span>Agentes</span><span>RAG</span><span>LangChain / LangGraph</span><span>Herramientas para desarrollo</span><span>Aprendizaje práctico</span>
+        </div>
+        <p class="source-note"><strong>Atribución:</strong> elaborado a partir de la conversación compartida de ChatGPT titulada “Latest AI News Summary”. <strong>Prompt original:</strong> “give me a detailed research of latest ai news”. Esta atribución solo identifica el contexto; no valida las afirmaciones de la conversación. Las afirmaciones, nombres, fechas y cifras provienen del resumen compartido, que no incluía una bibliografía consultable, y requieren verificación independiente.</p>
+      </div>
+    </section>
+  </main>
+
+  <nav class="deck-controls" aria-label="Controles de la presentación">
+    <div class="control-group">
+      <button class="control" id="previous" type="button" aria-label="Diapositiva anterior" title="Diapositiva anterior">Anterior</button>
+      <button class="control" id="next" type="button" aria-label="Diapositiva siguiente" title="Diapositiva siguiente">Siguiente</button>
+    </div>
+    <div class="progress-wrap">
+      <div class="progress-track" role="progressbar" aria-label="Progreso de la presentación" aria-valuemin="1" aria-valuemax="15" aria-valuenow="1">
+        <div class="progress-bar"></div>
+      </div>
+      <div class="counter" aria-live="polite"><span id="current">01</span> / <span id="total">15</span></div>
+    </div>
+    <div class="help">Flechas · Espacio · Inicio / Fin</div>
+  </nav>
+
+  <script>
+    (() => {
+      const slides = [...document.querySelectorAll('.slide')];
+      const previousButton = document.querySelector('#previous');
+      const nextButton = document.querySelector('#next');
+      const currentLabel = document.querySelector('#current');
+      const totalLabel = document.querySelector('#total');
+      const progressTrack = document.querySelector('.progress-track');
+      const progressBar = document.querySelector('.progress-bar');
+      const pad = (value) => String(value).padStart(2, '0');
+
+      let currentIndex = Math.max(0, Math.min(
+        slides.length - 1,
+        Number.parseInt(window.location.hash.replace('#slide-', ''), 10) - 1 || 0
+      ));
+
+      totalLabel.textContent = pad(slides.length);
+      progressTrack.setAttribute('aria-valuemax', String(slides.length));
+
+      const showSlide = (index, updateHash = true) => {
+        currentIndex = Math.max(0, Math.min(slides.length - 1, index));
+
+        slides.forEach((slide, slideIndex) => {
+          const isCurrent = slideIndex === currentIndex;
+          slide.classList.toggle('is-active', isCurrent);
+          slide.setAttribute('aria-hidden', String(!isCurrent));
+          if (isCurrent) {
+            slide.id = `slide-${slideIndex + 1}`;
+            slide.setAttribute('tabindex', '-1');
+          } else {
+            slide.removeAttribute('tabindex');
+          }
+        });
+
+        const position = currentIndex + 1;
+        currentLabel.textContent = pad(position);
+        progressTrack.setAttribute('aria-valuenow', String(position));
+        progressBar.style.width = `${(position / slides.length) * 100}%`;
+        previousButton.disabled = currentIndex === 0;
+        nextButton.disabled = currentIndex === slides.length - 1;
+        document.title = `${slides[currentIndex].dataset.title} — Informe de investigación sobre IA`;
+
+        if (updateHash) {
+          window.history.replaceState(null, '', `#slide-${position}`);
+        }
+      };
+
+      previousButton.addEventListener('click', () => showSlide(currentIndex - 1));
+      nextButton.addEventListener('click', () => showSlide(currentIndex + 1));
+
+      document.addEventListener('keydown', (event) => {
+        if (event.altKey || event.ctrlKey || event.metaKey) return;
+
+        const actions = {
+          ArrowLeft: () => showSlide(currentIndex - 1),
+          ArrowRight: () => showSlide(currentIndex + 1),
+          PageUp: () => showSlide(currentIndex - 1),
+          PageDown: () => showSlide(currentIndex + 1),
+          Home: () => showSlide(0),
+          End: () => showSlide(slides.length - 1),
+          ' ': () => showSlide(currentIndex + (event.shiftKey ? -1 : 1))
+        };
+
+        if (actions[event.key]) {
+          event.preventDefault();
+          actions[event.key]();
+        }
+      });
+
+      window.addEventListener('hashchange', () => {
+        const requested = Number.parseInt(window.location.hash.replace('#slide-', ''), 10);
+        if (Number.isFinite(requested)) showSlide(requested - 1, false);
+      });
+
+      document.querySelector('.skip-link').addEventListener('click', (event) => {
+        event.preventDefault();
+        slides[currentIndex].focus();
+      });
+
+      showSlide(currentIndex, false);
+    })();
+  </script>
+</body>
+</html>
