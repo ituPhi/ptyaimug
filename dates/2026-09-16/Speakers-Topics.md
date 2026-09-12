@@ -7,7 +7,4 @@
 Business Analytics Sr. Manager, Mas Móvil
 Presentation: TBD
 
-## Speaker - Elena Revicheva
-Presentation: TBD
-
 ¡Nos vemos el **16 de septiembre** y gracias por ser parte de los primeros builders del AIMUG Panamá! 🇵🇦🚀
