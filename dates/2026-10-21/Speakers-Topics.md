@@ -1,7 +1,7 @@
 ## Detalles
 
 ## Speaker - Livan Gonzalez
-"Shifting de arquitectura simplona y patética a una que sigue principios de ingeniería de datos"
+"Análisis de estaciones de carga para vehículos eléctricos mediante LTM"
 
 ## Speaker - Elena Revicheva
-Presentation: TBD
+"Operadores de crecimiento basados en IA para empresas de servicios"
